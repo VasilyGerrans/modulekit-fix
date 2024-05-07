@@ -21,6 +21,8 @@
   },
   "files": [
     "accounts",
+    "foundry.toml",
+    "remappings.txt",
     "packages",
     "examples",
     "package.json",

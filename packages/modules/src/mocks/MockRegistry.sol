@@ -2,7 +2,7 @@
 pragma solidity ^0.8.23;
 
 /* solhint-disable no-unused-vars */
-import { IERC7484Registry } from "../interfaces/IERC7484Registry.sol";
+import { IERC7484Registry } from "./interfaces/IERC7484Registry.sol";
 /// @title MockRegistry
 /// @author zeroknots
 

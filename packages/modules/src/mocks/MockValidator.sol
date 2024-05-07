@@ -2,7 +2,7 @@
 pragma solidity ^0.8.23;
 
 /* solhint-disable no-unused-vars */
-import { ERC7579ValidatorBase } from "../Modules.sol";
+import { ERC7579ValidatorBase } from "../base/ERC7579ValidatorBase.sol";
 import { PackedUserOperation } from "../external/ERC4337.sol";
 
 contract MockValidator is ERC7579ValidatorBase {

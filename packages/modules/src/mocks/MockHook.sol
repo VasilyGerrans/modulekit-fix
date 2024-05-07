@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.23;
 
-import { ERC7579HookBase } from "../Modules.sol";
+import { ERC7579HookBase } from "../base/ERC7579HookBase.sol";
 
 contract MockHook is ERC7579HookBase {
     function onInstall(bytes calldata data) external override { }

@@ -9,7 +9,6 @@ import { EntryPointSimulations } from
     "@ERC4337/account-abstraction/contracts/core/EntryPointSimulations.sol";
 import { IEntryPointSimulations } from
     "@ERC4337/account-abstraction/contracts/interfaces/IEntryPointSimulations.sol";
-import { ISessionKeyManager, etchSessionKeyManager } from "./predeploy/SessionKeyManager.sol";
 import { ExtensibleFallbackHandler } from "../core/ExtensibleFallbackHandler.sol";
 import { MockRegistry } from "../mocks/MockRegistry.sol";
 import { MockFactory } from "./predeploy/MockFactory.sol";
@@ -21,7 +20,6 @@ import "./utils/Log.sol";
 struct Auxiliary {
     IEntryPoint entrypoint;
     UserOpGasLog gasSimulation;
-    ISessionKeyManager sessionKeyManager;
     ExtensibleFallbackHandler fallbackHandler;
     ERC7579Bootstrap bootstrap;
     IERC7484Registry registry;
@@ -98,8 +96,6 @@ contract AuxiliaryFactory {
         auxiliary.registry = new MockRegistry();
         label(address(auxiliary.registry), "ERC7484Registry");
         auxiliary.initialTrustedAttester = makeAddr("Trusted Attester");
-        auxiliary.sessionKeyManager = etchSessionKeyManager();
-        label(address(auxiliary.sessionKeyManager), "SessionKeyManager");
         auxiliary.fallbackHandler = new ExtensibleFallbackHandler();
         label(address(auxiliary.fallbackHandler), "FallbackHandler");
     }

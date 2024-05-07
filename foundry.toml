@@ -1,5 +1,5 @@
 [profile.default]
-libs = ["accounts","packages"]
+libs = ["accounts","packages/modulekit"]
 #via_ir = true
 fs_permissions = [{ access = "read", path = "out-optimized" }, { access = "read-write", path = "gas_calculations" }]
 allow_paths = ["*", "/"]

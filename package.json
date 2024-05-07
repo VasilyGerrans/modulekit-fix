@@ -1,10 +1,10 @@
 {
-  "name": "@rhinestone/modulekit",
+  "name": "modulekit-monorepo",
   "description": "ModuleKit is a development toolkit to build Smart Account Modules",
   "license": "MIT",
   "version": "0.3.7",
   "author": {
-    "name": "zeroknots.eth",
+    "name": "rhinestone",
     "url": "https://rhinestone.wtf"
   },
   "bugs": {
@@ -16,9 +16,6 @@
     "examples/"
   ],
   "devDependencies": {
-    "@rhinestone/modulekit": "workspace:*",
-    "@rhinestone/safe7579": "workspace:*",
-    "@rhinestone/sessionkeymanager": "workspace:*",
     "prettier": "^2.8.8",
     "solhint": "^4.5.2"
   },

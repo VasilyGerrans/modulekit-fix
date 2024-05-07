@@ -12,7 +12,6 @@
   },
   "devDependencies": {
     "@rhinestone/modulekit": "workspace:*",
-    "@rhinestone/sessionkeymanager": "workspace:*",
     "@safe-global/safe-contracts": "^1.4.1",
     "@openzeppelin/contracts": "5.0.1",
     "@ERC4337/account-abstraction": "github:kopy-kat/account-abstraction#develop",

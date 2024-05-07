@@ -12,7 +12,6 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@rhinestone/sessionkeymanager": "workspace:*",
     "@rhinestone/safe7579": "workspace:*",
     "ds-test": "github:dapphub/ds-test",
     "forge-std": "github:foundry-rs/forge-std",

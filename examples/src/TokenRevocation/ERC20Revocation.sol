@@ -1,11 +1,11 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.23;
 
-import { SessionKeyBase } from "modulekit/src/Modules.sol";
 import { IERC20 } from "forge-std/interfaces/IERC20.sol";
 import { IERC721 } from "forge-std/interfaces/IERC721.sol";
+import { ERC7579ModuleBase } from "@rhinestone/modulekit-modules/src/base/ERC7579ModuleBase.sol";
 
-contract ERC20Revocation is SessionKeyBase {
+contract ERC20Revocation is ERC7579ModuleBase {
     /*//////////////////////////////////////////////////////////////////////////
                             CONSTANTS & STORAGE
     //////////////////////////////////////////////////////////////////////////*/
@@ -56,7 +56,7 @@ contract ERC20Revocation is SessionKeyBase {
         bytes4 targetSelector = bytes4(callData[:4]);
 
         if (transaction.token != to) revert InvalidToken();
-        if (value != 0) revert InvalidValue();
+        if (value != 0) revert(); // InvalidValue();
         if (transaction.tokenType == TokenType.ERC20) {
             _validateERC20(targetSelector, callData);
         } else if (transaction.tokenType == TokenType.ERC721) {
@@ -79,7 +79,7 @@ contract ERC20Revocation is SessionKeyBase {
                 // amount)
             if (amount != 0) revert NotZero();
         } else {
-            revert InvalidMethod(targetSelector);
+            revert(); // InvalidMethod(targetSelector);
         }
     }
 
@@ -93,7 +93,7 @@ contract ERC20Revocation is SessionKeyBase {
                 // approved)
             if (approved) revert NotZero();
         } else {
-            revert InvalidMethod(targetSelector);
+            revert(); // InvalidMethod(targetSelector);
         }
     }
 

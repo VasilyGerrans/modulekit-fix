@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.21;
 
-import { ERC7579ValidatorBase, ERC7579HookBase } from "modulekit/src/Modules.sol";
-import { PackedUserOperation } from "modulekit/src/ModuleKit.sol";
+import { ERC7579ValidatorBase, ERC7579HookBase } from "@rhinestone/modulekit/src/Modules.sol";
+import { PackedUserOperation } from "@rhinestone/modulekit/src/ModuleKit.sol";
 import { SignatureCheckerLib } from "solady/utils/SignatureCheckerLib.sol";
 import { ECDSA } from "solady/utils/ECDSA.sol";
 
@@ -58,7 +58,7 @@ contract DeadmanSwitch is ERC7579HookBase, ERC7579ValidatorBase {
         config.lastAccess = uint48(block.timestamp);
     }
 
-    function postCheck(bytes calldata, bool, bytes calldata) external { }
+    function postCheck(bytes calldata/* , bool, bytes calldata */) external { }
 
     function validateUserOp(
         PackedUserOperation calldata userOp,

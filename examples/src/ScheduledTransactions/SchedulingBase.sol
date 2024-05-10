@@ -2,10 +2,10 @@
 pragma solidity ^0.8.23;
 
 import { IERC20 } from "forge-std/interfaces/IERC20.sol";
-import { IERC7579Account } from "modulekit/src/Accounts.sol";
-import { ERC7579ExecutorBase, SessionKeyBase } from "modulekit/src/Modules.sol";
+import { IERC7579Account } from "@rhinestone/modulekit/src/Accounts.sol";
+import { ERC7579ExecutorBase } from "@rhinestone/modulekit/src/Modules.sol";
 
-abstract contract SchedulingBase is ERC7579ExecutorBase, SessionKeyBase {
+abstract contract SchedulingBase is ERC7579ExecutorBase {
     /*//////////////////////////////////////////////////////////////////////////
                             CONSTANTS & STORAGE
     //////////////////////////////////////////////////////////////////////////*/
@@ -127,7 +127,7 @@ abstract contract SchedulingBase is ERC7579ExecutorBase, SessionKeyBase {
         external
         view
         virtual
-        override
+        // override
         returns (address)
     {
         ExecutorAccess memory access = abi.decode(_sessionKeyData, (ExecutorAccess));
@@ -136,7 +136,8 @@ abstract contract SchedulingBase is ERC7579ExecutorBase, SessionKeyBase {
 
         uint256 jobId = abi.decode(callData[4:], (uint256));
         if (targetSelector != this.executeOrder.selector) {
-            revert InvalidMethod(targetSelector);
+            revert();
+            // revert InvalidMethod(targetSelector);
         }
 
         if (jobId != access.jobId) {
@@ -144,11 +145,13 @@ abstract contract SchedulingBase is ERC7579ExecutorBase, SessionKeyBase {
         }
 
         if (destinationContract != address(this)) {
-            revert InvalidRecipient();
+            revert();
+            // revert InvalidRecipient();
         }
 
         if (callValue != 0) {
-            revert InvalidValue();
+            revert();
+            // revert InvalidValue();
         }
 
         return access.sessionKeySigner;

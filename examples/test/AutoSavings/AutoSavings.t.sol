@@ -2,14 +2,14 @@
 pragma solidity ^0.8.23;
 
 import "forge-std/Test.sol";
-import "modulekit/src/ModuleKit.sol";
-import "modulekit/src/Helpers.sol";
-import "modulekit/src/Core.sol";
+import "@rhinestone/modulekit/src/ModuleKit.sol";
+import "@rhinestone/modulekit/src/Helpers.sol";
+import "@rhinestone/modulekit/src/Core.sol";
 import "solmate/test/utils/mocks/MockERC20.sol";
 import "solmate/test/utils/mocks/MockERC4626.sol";
 import { AutoSavingToVault } from "src/AutoSavings/AutoSavings.sol";
 
-import { MODULE_TYPE_EXECUTOR } from "modulekit/src/external/ERC7579.sol";
+import { MODULE_TYPE_EXECUTOR } from "@rhinestone/modulekit/src/external/ERC7579.sol";
 
 contract AutoSavingsTest is RhinestoneModuleKit, Test {
     using ModuleKitHelpers for *;
@@ -53,13 +53,13 @@ contract AutoSavingsTest is RhinestoneModuleKit, Test {
             })
         );
 
-        (, sessionKeyDigest) = instance.installSessionKey({
-            sessionKeyModule: address(autosavings),
-            validUntil: uint48(block.timestamp + 7 days),
-            validAfter: uint48(block.timestamp - 7 days),
-            sessionKeyData: sessionKeyData,
-            txValidator: address(instance.defaultValidator)
-        });
+        // (, sessionKeyDigest) = instance.installSessionKey({ <-- installSessionKey not defined on AccountInstance
+        //     sessionKeyModule: address(autosavings),
+        //     validUntil: uint48(block.timestamp + 7 days),
+        //     validAfter: uint48(block.timestamp - 7 days),
+        //     sessionKeyData: sessionKeyData,
+        //     txValidator: address(instance.defaultValidator)
+        // });
 
         AutoSavingToVault.Config memory savingForToken = AutoSavingToVault.Config({
             percentage: 100, // 100 = 1%

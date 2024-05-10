@@ -1,10 +1,9 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.21;
 
-import "@rhinestone/safe7579/src/core/ModuleManager.sol";
-import "@rhinestone/safe7579/src/core/HookManager.sol";
-
-import "../../external/ERC7579.sol";
+import "safe7579/core/ModuleManager.sol";
+import "safe7579/core/HookManager.sol";
+import "@rhinestone/modulekit-modules/src/external/ERC7579.sol";
 
 contract BootstrapSafe is ModuleManager, HookManager {
     function singleInitMSA(IERC7579Validator validator, bytes calldata data) external {

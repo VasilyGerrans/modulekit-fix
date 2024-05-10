@@ -7,7 +7,7 @@ import { IERC7579Account } from "src/external/ERC7579.sol";
 import "forge-std/Test.sol";
 import { ExecutionLib, Execution } from "erc7579/lib/ExecutionLib.sol";
 
-contract HookDestructTest is Test, ERC7579HookDestruct {
+abstract contract HookDestructTest is Test, ERC7579HookDestruct { // <-- marked as abstract
     struct Log {
         address msgSender;
         uint256 msgValue;

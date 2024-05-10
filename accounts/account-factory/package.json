@@ -1,5 +1,5 @@
 {
-  "name": "@rhinestone/accountFactory",
+  "name": "@rhinestone/account-factory",
   "description": "Multi Account Factory",
   "license": "MIT",
   "version": "0.1.0",
@@ -10,18 +10,24 @@
   "bugs": {
     "url": "https://github.com/rhinestonewtf/modulekit/issues"
   },
-  "devDependencies": {
+  "dependencies": {
+    "@rhinestone/modulekit-modules": "workspace:*",
     "@rhinestone/safe7579": "workspace:*",
-    "solady": "github:vectorized/solady",
+    "@ERC4337/account-abstraction": "github:kopy-kat/account-abstraction#develop",
+    "@ERC4337/account-abstraction-v0.6": "github:eth-infinitism/account-abstraction#v0.6.0",
+    "sentinellist": "github:zeroknots/sentinellist",
+    "ds-test": "github:dapphub/ds-test",
     "forge-std": "github:foundry-rs/forge-std",
-    "ds-test": "github:dapphub/ds-test"
+    "solady": "github:vectorized/solady",
+    "@safe-global/safe-contracts": "^1.4.1"
   },
   "files": [
     "artifacts",
     "src",
     "test/utils",
     "CHANGELOG.md",
-    "LICENSE-GPL.md"
+    "LICENSE-GPL.md",
+    "remappings.txt"
   ],
   "keywords": [
     "blockchain",

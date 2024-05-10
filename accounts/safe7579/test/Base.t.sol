@@ -4,10 +4,10 @@ pragma solidity ^0.8.23;
 import "forge-std/Test.sol";
 import { SafeERC7579 } from "src/SafeERC7579.sol";
 import { ModuleManager } from "src/core/ModuleManager.sol";
-import { MockValidator } from "./mocks/MockValidator.sol";
+import { MockValidator } from "@rhinestone/modulekit-modules/src/mocks/MockValidator.sol";
 import { MockExecutor } from "./mocks/MockExecutor.sol";
 import { MockFallback } from "./mocks/MockFallback.sol";
-import { MockTarget } from "modulekit/src/mocks/MockTarget.sol";
+import { MockTarget } from "@rhinestone/modulekit-modules/src/mocks/MockTarget.sol";
 
 import { Safe } from "@safe-global/safe-contracts/contracts/Safe.sol";
 import { LibClone } from "solady/utils/LibClone.sol";

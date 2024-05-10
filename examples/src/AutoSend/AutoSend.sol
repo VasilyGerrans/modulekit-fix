@@ -2,12 +2,12 @@
 pragma solidity ^0.8.23;
 
 import { IERC20 } from "forge-std/interfaces/IERC20.sol";
-import { IERC7579Account } from "modulekit/src/Accounts.sol";
-import { ERC7579ExecutorBase, SessionKeyBase } from "modulekit/src/Modules.sol";
+import { IERC7579Account } from "@rhinestone/modulekit/src/Accounts.sol";
+import { ERC7579ExecutorBase } from "@rhinestone/modulekit/src/Modules.sol";
 import { ModeLib } from "erc7579/lib/ModeLib.sol";
 import { ExecutionLib } from "erc7579/lib/ExecutionLib.sol";
 
-contract AutoSendSessionKey is ERC7579ExecutorBase, SessionKeyBase {
+contract AutoSendSessionKey is ERC7579ExecutorBase {
     /*//////////////////////////////////////////////////////////////////////////
                             CONSTANTS & STORAGE
     //////////////////////////////////////////////////////////////////////////*/
@@ -70,7 +70,8 @@ contract AutoSendSessionKey is ERC7579ExecutorBase, SessionKeyBase {
 
         uint128 newSpent = log.spent + params.amount;
         if (newSpent > log.maxAmount) {
-            revert InvalidAmount();
+            revert();
+            // revert InvalidAmount();
         }
         log.spent = newSpent;
 
@@ -91,7 +92,7 @@ contract AutoSendSessionKey is ERC7579ExecutorBase, SessionKeyBase {
     )
         public
         virtual
-        override
+        // override
         returns (address)
     {
         ExecutorAccess memory access = abi.decode(_sessionKeyData, (ExecutorAccess));
@@ -99,23 +100,28 @@ contract AutoSendSessionKey is ERC7579ExecutorBase, SessionKeyBase {
         bytes4 targetSelector = bytes4(callData[:4]);
         Params memory params = abi.decode(callData[4:], (Params));
         if (targetSelector != this.autoSend.selector) {
-            revert InvalidMethod(targetSelector);
+            revert();
+            // revert InvalidMethod(targetSelector);
         }
 
         if (params.receiver != access.receiver) {
-            revert InvalidRecipient();
+            revert();
+            // revert InvalidRecipient();
         }
 
         if (destinationContract != address(this)) {
-            revert InvalidTarget();
+            revert();
+            // revert InvalidTarget();
         }
 
         if (params.token != access.token) {
-            revert InvalidTarget();
+            revert();
+            // revert InvalidTarget();
         }
 
         if (callValue != 0) {
-            revert InvalidValue();
+            revert();
+            // revert InvalidValue();
         }
 
         return access.sessionKeySigner;

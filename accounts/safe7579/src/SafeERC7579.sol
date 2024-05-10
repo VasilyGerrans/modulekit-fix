@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.23;
 
-import { IERC7579Account, Execution } from "erc7579/interfaces/IERC7579Account.sol";
+import { IERC7579Account, Execution } from "../node_modules/erc7579/src/interfaces/IERC7579Account.sol";
 import { IMSA } from "erc7579/interfaces/IMSA.sol";
 import {
     CallType, ModeCode, ModeLib, CALLTYPE_SINGLE, CALLTYPE_BATCH

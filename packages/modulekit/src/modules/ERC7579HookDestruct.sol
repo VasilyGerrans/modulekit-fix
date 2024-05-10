@@ -118,8 +118,7 @@ abstract contract ERC7579HookDestruct is ERC7579HookBase {
         bytes calldata executionReturnValue
     )
         external
-        override
-    {
+    { // <-- removed override here
         onPostCheck(hookData, executionSuccess, executionReturnValue);
     }
 

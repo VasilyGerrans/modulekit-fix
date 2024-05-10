@@ -4,7 +4,7 @@ pragma solidity ^0.8.23;
 import "forge-std/Base.sol";
 import "./safe7579/Safe7579Factory.sol";
 import "./referenceImpl/RefImplFactory.sol";
-import { ERC7579BootstrapConfig } from "../external/ERC7579.sol";
+import { ERC7579BootstrapConfig } from "@rhinestone/modulekit-modules/src/external/ERC7579.sol";
 
 enum AccountType {
     DEFAULT,

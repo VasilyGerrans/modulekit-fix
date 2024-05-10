@@ -2,13 +2,13 @@
 pragma solidity ^0.8.23;
 
 import { IERC20 } from "forge-std/interfaces/IERC20.sol";
-import { UniswapV3Integration } from "modulekit/src/integrations/uniswap/v3/Uniswap.sol";
-import { Execution, IERC7579Account } from "modulekit/src/Accounts.sol";
-import { ERC7579ExecutorBase, SessionKeyBase } from "modulekit/src/Modules.sol";
+import { UniswapV3Integration } from "@rhinestone/modulekit/src/integrations/uniswap/v3/Uniswap.sol";
+import { Execution, IERC7579Account } from "@rhinestone/modulekit/src/Accounts.sol";
+import { ERC7579ExecutorBase } from "@rhinestone/modulekit/src/Modules.sol";
 import { ModeLib } from "erc7579/lib/ModeLib.sol";
 import { ExecutionLib } from "erc7579/lib/ExecutionLib.sol";
 
-contract DollarCostAverage is ERC7579ExecutorBase, SessionKeyBase {
+contract DollarCostAverage is ERC7579ExecutorBase {
     /*//////////////////////////////////////////////////////////////////////////
                             CONSTANTS & STORAGE
     //////////////////////////////////////////////////////////////////////////*/
@@ -94,10 +94,10 @@ contract DollarCostAverage is ERC7579ExecutorBase, SessionKeyBase {
     )
         public
         virtual
-        override
-        onlyFunctionSig(this.dca.selector, bytes4(callData[:4]))
-        onlyZeroValue(callValue)
-        onlyThis(destinationContract)
+        // override
+        // onlyFunctionSig(this.dca.selector, bytes4(callData[:4]))
+        // onlyZeroValue(callValue)
+        // onlyThis(destinationContract)
         returns (address)
     {
         ScopedAccess memory access = abi.decode(_sessionKeyData, (ScopedAccess));

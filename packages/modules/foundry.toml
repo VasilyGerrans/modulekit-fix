@@ -4,6 +4,7 @@ out = "out"
 libs = ["node_modules"]
 fs_permissions = [{ access = "read", path = "out-optimized" }]
 allow_paths = ["*", "/"]
+solc_version = "0.8.25"
 
 [fmt]
 bracket_spacing = true

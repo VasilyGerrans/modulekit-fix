@@ -5,6 +5,7 @@ import "erc7579/interfaces/IERC7579Account.sol";
 import "erc7579/lib/ModeLib.sol";
 import "erc7579/lib/ExecutionLib.sol";
 import { TestBaseUtil, MockTarget, MockFallback } from "./Base.t.sol";
+import { PackedUserOperation } from "account-abstraction/interfaces/PackedUserOperation.sol";
 
 import "forge-std/console2.sol";
 

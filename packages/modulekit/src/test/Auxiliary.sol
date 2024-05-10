@@ -10,7 +10,7 @@ import { EntryPointSimulations } from
 import { IEntryPointSimulations } from
     "@ERC4337/account-abstraction/contracts/interfaces/IEntryPointSimulations.sol";
 import { ExtensibleFallbackHandler } from "../core/ExtensibleFallbackHandler.sol";
-import { MockRegistry } from "../mocks/MockRegistry.sol";
+import { MockRegistry } from "@rhinestone/modulekit-modules/src/mocks/MockRegistry.sol";
 import { MockFactory } from "./predeploy/MockFactory.sol";
 
 /* solhint-disable no-global-import */
@@ -22,7 +22,7 @@ struct Auxiliary {
     UserOpGasLog gasSimulation;
     ExtensibleFallbackHandler fallbackHandler;
     ERC7579Bootstrap bootstrap;
-    IERC7484Registry registry;
+    MockRegistry registry; // <-- replaced interface w specific contract
     address initialTrustedAttester;
     MockFactory mockFactory;
 }

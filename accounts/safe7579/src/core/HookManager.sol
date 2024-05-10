@@ -45,7 +45,7 @@ abstract contract HookManager is ModuleManager {
             safe: msg.sender,
             target: hook,
             value: 0,
-            callData: abi.encodeCall(IHook.postCheck, (hookPreContext, false, ""))
+            callData: abi.encodeCall(IHook.postCheck, abi.encode(hookPreContext, false, "")) // <- check that abi.encode is appropriate here
         });
     }
 

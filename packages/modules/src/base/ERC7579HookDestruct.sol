@@ -3,14 +3,14 @@ pragma solidity ^0.8.25;
 
 import { ERC7579HookBase } from "./ERC7579HookBase.sol";
 import {
-    ModeLib,
+    ERC7579ModeLib,
     CallType,
     ModeCode,
     CALLTYPE_SINGLE,
     CALLTYPE_BATCH,
     CALLTYPE_DELEGATECALL,
     IERC7579Account,
-    ExecutionLib,
+    ERC7579ExecutionLib,
     Execution
 } from "../external/ERC7579.sol";
 
@@ -78,14 +78,14 @@ abstract contract ERC7579HookDestruct is ERC7579HookBase {
         bytes calldata encodedExecutions = msgData[EXEC_OFFSET:EXEC_OFFSET + paramLen];
 
         ModeCode mode = ModeCode.wrap(bytes32(msgData[4:36]));
-        CallType calltype = ModeLib.getCallType(mode);
+        CallType calltype = ERC7579ModeLib.getCallType(mode);
 
         if (calltype == CALLTYPE_SINGLE) {
             (address to, uint256 value, bytes calldata callData) =
-                ExecutionLib.decodeSingle(encodedExecutions);
+                ERC7579ExecutionLib.decodeSingle(encodedExecutions);
             return onExecute(msgSender, to, value, callData);
         } else if (calltype == CALLTYPE_BATCH) {
-            Execution[] calldata execs = ExecutionLib.decodeBatch(encodedExecutions);
+            Execution[] calldata execs = ERC7579ExecutionLib.decodeBatch(encodedExecutions);
             return onExecuteBatch(msgSender, execs);
         }
     }
@@ -101,14 +101,14 @@ abstract contract ERC7579HookDestruct is ERC7579HookBase {
         bytes calldata encodedExecutions = msgData[EXEC_OFFSET:EXEC_OFFSET + paramLen];
 
         ModeCode mode = ModeCode.wrap(bytes32(msgData[4:36]));
-        CallType calltype = ModeLib.getCallType(mode);
+        CallType calltype = ERC7579ModeLib.getCallType(mode);
 
         if (calltype == CALLTYPE_SINGLE) {
             (address to, uint256 value, bytes calldata callData) =
-                ExecutionLib.decodeSingle(encodedExecutions);
+                ERC7579ExecutionLib.decodeSingle(encodedExecutions);
             return onExecuteFromExecutor(msgSender, to, value, callData);
         } else if (calltype == CALLTYPE_BATCH) {
-            Execution[] calldata execs = ExecutionLib.decodeBatch(encodedExecutions);
+            Execution[] calldata execs = ERC7579ExecutionLib.decodeBatch(encodedExecutions);
             return onExecuteBatchFromExecutor(msgSender, execs);
         }
     }
@@ -119,7 +119,6 @@ abstract contract ERC7579HookDestruct is ERC7579HookBase {
         bytes calldata executionReturnValue
     )
         external
-        override
     {
         onPostCheck(hookData, executionSuccess, executionReturnValue);
     }

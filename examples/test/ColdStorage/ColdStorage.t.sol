@@ -2,20 +2,15 @@
 pragma solidity ^0.8.23;
 
 import "forge-std/Test.sol";
-import "modulekit/src/ModuleKit.sol";
-import "modulekit/src/Modules.sol";
-import "modulekit/src/Helpers.sol";
-import "modulekit/src/core/ExtensibleFallbackHandler.sol";
-import "@rhinestone/sessionkeymanager/src/ISessionValidationModule.sol";
-import {
-    SessionData,
-    SessionKeyManagerLib
-} from "@rhinestone/sessionkeymanager/src/SessionKeyManagerLib.sol";
-import "modulekit/src/Mocks.sol";
+import "@rhinestone/modulekit/src/ModuleKit.sol";
+import "@rhinestone/modulekit/src/Modules.sol";
+import "@rhinestone/modulekit/src/Helpers.sol";
+import "@rhinestone/modulekit/src/core/ExtensibleFallbackHandler.sol";
+import "@rhinestone/modulekit/src/Mocks.sol";
 import { Solarray } from "solarray/Solarray.sol";
 import { ECDSA } from "solady/utils/ECDSA.sol";
 
-import { IERC7579Account, Execution } from "modulekit/src/Accounts.sol";
+import { IERC7579Account, Execution } from "@rhinestone/modulekit/src/Accounts.sol";
 import { FlashloanCallback } from "src/ColdStorage/FlashloanCallback.sol";
 import { FlashloanLender } from "src/ColdStorage/FlashloanLender.sol";
 import { ColdStorageHook } from "src/ColdStorage/ColdStorageHook.sol";
@@ -23,7 +18,7 @@ import { ColdStorageExecutor } from "src/ColdStorage/ColdStorageExecutor.sol";
 import { OwnableValidator } from "src/OwnableValidator/OwnableValidator.sol";
 import { CALLTYPE_SINGLE, CALLTYPE_STATIC } from "erc7579/lib/ModeLib.sol";
 
-import { ERC7579BootstrapConfig } from "modulekit/src/external/ERC7579.sol";
+import { ERC7579BootstrapConfig } from "@rhinestone/modulekit/src/external/ERC7579.sol";
 
 import "src/ColdStorage/interfaces/Flashloan.sol";
 import "erc7579/lib/ExecutionLib.sol";
